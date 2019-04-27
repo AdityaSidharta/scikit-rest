@@ -1,7 +1,7 @@
 import datetime
 import pandas as pd
 
-from skrest.date import is_date
+from scikit_rest.type import is_date, is_bool, is_float, is_int, is_str
 
 
 def validate_type(col_types):
@@ -23,10 +23,19 @@ def validate_args(args, col_types, is_nullable):
         else:
             if col_type == datetime.datetime:
                 if not is_date(args[col]):
-                    status_message[col] = "input {} has wrong format (supposed to be {})".format(col, "datetime")
-            else:
-                if not isinstance(args[col], col_type):
                     status_message[col] = "input {} has wrong format (supposed to be {})".format(col, col_type)
-    is_success = len(status_message) == 0
+            elif col_type == float:
+                if not is_float(args[col]):
+                    status_message[col] = "input {} has wrong format (supposed to be {})".format(col, col_type)
+            elif col_type == int:
+                if not is_int(args[col]):
+                    status_message[col] = "input {} has wrong format (supposed to be {})".format(col, col_type)
+            elif col_type == bool:
+                if not is_bool(args[col]):
+                    status_message[col] = "input {} has wrong format (supposed to be {})".format(col, col_type)
+            else:
+                if not is_str(args[col]):
+                    status_message[col] = "input {} has wrong format (supposed to be {})".format(col, col_type)
 
+    is_success = len(status_message) == 0
     return is_success, status_message

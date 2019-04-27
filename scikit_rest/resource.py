@@ -6,12 +6,13 @@ from collections import OrderedDict
 from flask_restful import Resource, reqparse
 
 from scikit_rest.validator import validate_args
+from scikit_rest.type import set_type
 
 
 class Prediction(Resource):
     def __init__(self, **kwargs):
         self.col_list = kwargs["col_list"]
-        self.col_types = kwargs["data_types"]
+        self.col_types = kwargs["col_types"]
         self.transform_fn = kwargs["transform_fn"]
         self.predict_fn = kwargs["predict_fn"]
         self.is_nullable = kwargs["is_nullable"]
@@ -25,7 +26,7 @@ class Prediction(Resource):
         self.status_message = "Success"
         self.status_code = 200
 
-        is_success, status_message = validate_args(self.args, self.col_types, self.isnullable)
+        is_success, status_message = validate_args(self.args, self.col_types, self.is_nullable)
         if not is_success:
             self.status_message = status_message
             self.status_code = 400
@@ -40,10 +41,7 @@ class Prediction(Resource):
         if self.status_code == 200:
             input_dict = OrderedDict()
             for col in self.col_list:
-                if self.col_type[col] == datetime.datetime:
-                    value = parse(self.args[col])
-                else:
-                    value = self.args[col]
+                value = set_type(self.args[col], self.col_types[col])
                 input_dict[col] = [value]
             input_df = pd.DataFrame(input_dict)
             transformed_df = self.transform_fn(input_df)

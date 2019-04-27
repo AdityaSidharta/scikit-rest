@@ -7,5 +7,12 @@ module = "scikit_rest"
 author = "Aditya Kelvianto Sidharta"
 author-email = "aditya.sdrt@gmail.com"
 home-page = "https://github.com/AdityaSidharta/scikit_rest"
+requires=[
+    "flask==0.12.2",
+    "flask-restful",
+    "numpy",
+    "pandas",
+    "python-dateutil",
+]
+description-file="README.md"
 classifiers = ["License :: OSI Approved :: MIT License"]
-

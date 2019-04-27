@@ -1,5 +1,5 @@
 """Automatically serve ML model as a REST API"""
-__version__ = "0.0.2"
+__version__ = "0.1.0"
 
 from flask import Flask
 from flask_restful import Api
@@ -24,4 +24,4 @@ def serve(col_list, col_types, transform_fn, predict_fn, port, is_nullable=False
         },
     )
     app.config["BUNDLE_ERRORS"] = True
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=None)
