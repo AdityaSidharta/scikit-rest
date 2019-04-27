@@ -5,7 +5,7 @@ from dateutil.parser import parse
 from collections import OrderedDict
 from flask_restful import Resource, reqparse
 
-from skrest.validator import validate_args
+from scikit_rest.validator import validate_args
 
 
 class Prediction(Resource):
