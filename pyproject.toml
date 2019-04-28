@@ -13,6 +13,7 @@ requires=[
     "numpy",
     "pandas",
     "python-dateutil",
+    "scikit-learn"
 ]
 description-file="README.md"
 classifiers = ["License :: OSI Approved :: MIT License"]
