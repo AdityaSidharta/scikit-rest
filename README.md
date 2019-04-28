@@ -1,6 +1,6 @@
 # scikit-rest
 
-![logo](logo.png)
+![logo](logo.png = 100x100)
 Automatically deploy your ML model as a REST API
 
 Often times, deploying your favorite Scikit-learn / XGBoost / Pytorch / Tensorflow model as a REST API might take a lot of time. There are a lot of boilerplate codes to be written. `scikit-rest` is a package designed to alleviate most of the pain points within this process.
