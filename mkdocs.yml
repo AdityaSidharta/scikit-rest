@@ -1,0 +1,5 @@
+site_name: scikit-rest
+repo_url: https://github.com/AdityaSidharta/scikit_rest
+
+nav:
+  - Home : index.md
