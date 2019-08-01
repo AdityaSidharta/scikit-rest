@@ -2,6 +2,7 @@
 
 ![logo](logo.png)
 
+[Documentation](https://scikit-rest.readthedocs.io/en/latest/)
 
 Automatically deploy your ML model as a REST API
 
